@@ -5,22 +5,40 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "build:client": "vue-cli-service build",
+    "build:server": "cross-env WEBPACK_TARGET=node vue-cli-service build",
+    "build:win": "npm run build:server && mv dist/vue-ssr-server-bundle.json bundle && npm run build:client && mv bundle dist/vue-ssr-server-bundle.json",
+    "dev:serve": "cross-env WEBPACK_TARGET=node node ./server/ssr.js",
+    "dev": "concurrently \"npm run serve\" \"npm run dev:serve\" "
+
   },
   "dependencies": {
+    "axios": "^0.18.0",
+    "koa": "^2.6.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
     "vue": "^2.5.17",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-router-sync": "^5.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.4",
     "@vue/cli-plugin-eslint": "^3.0.4",
     "@vue/cli-service": "^3.0.4",
     "babel-eslint": "^10.0.1",
+    "concurrently": "^4.0.1",
+    "cross-env": "^5.2.0",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.0.0-0",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
-    "vue-template-compiler": "^2.5.17"
+    "lodash.merge": "^4.6.1",
+    "memory-fs": "^0.4.1",
+    "vue-server-renderer": "^2.5.17",
+    "vue-template-compiler": "^2.5.17",
+    "webpack": "^4.25.1",
+    "webpack-node-externals": "^1.7.2"
   }
 }

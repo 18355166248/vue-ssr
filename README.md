@@ -24,3 +24,15 @@ npm run test
 ```
 npm run lint
 ```
+
+
+### 实现服务端渲染的话 执行:
+````
+  npm run build:win
+  node server.js
+````
+
+### 实现服务端渲染热重载的话 执行:
+````
+  npm run dev
+````
